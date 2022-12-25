@@ -1,25 +1,56 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "airbnb",
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "import/prefer-default-export": 0,
+    "react/destructuring-assignment": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "react/jsx-filename-extension": 0,
+    "import/extensions": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "global-require": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "import/no-unresolved": 0,
+    "react/no-array-index-key": 0,
+    "max-len": 0,
+    "react/prop-types": 0,
+    "react/jsx-indent-props": [
+      2,
+      "tab"
     ],
-    "overrides": [
+    "indent": [
+      2,
+      "tab",
+      {
+        "SwitchCase": 1,
+        "VariableDeclarator": 1
+      }
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
+    "no-tabs": 0,
+    "react/jsx-indent": [
+      2,
+      "tab"
     ],
-    "rules": {
-        "react/react-in-jsx-scope": false
-    }
+    "linebreak-style": 0
+  }
 }

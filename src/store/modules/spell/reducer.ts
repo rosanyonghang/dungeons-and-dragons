@@ -1,39 +1,46 @@
-import {getToken} from "../../../utils/helpers/tokenStorage.helper";
-import {isAuthenticated} from "../../../utils/helpers/checkIfAuthenticated";
-import {SET_FAVORITES, SET_SPELL, SET_SPELLS} from "./actionTypes";
+import {
+	ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES, SET_SPELL, SET_SPELLS,
+} from './actionTypes';
+import { IBase } from '../../../components/modules/Spell/Spell.dto';
 
 interface ISpellState {
-    spells:any;
-    spell:any;
-    favorites:any;
+    spells: IBase[];
+    spell: any;
+    favorites: IBase[];
 }
 
 const initialState: ISpellState = {
-    spells:[],
-    spell:null,
-    favorites:[]
-}
+	spells: [],
+	spell: null,
+	favorites: [],
+};
 
+// eslint-disable-next-line default-param-last
 export const spellReducer = (state = initialState, action: any) => {
-    switch (action.type) {
-        case SET_SPELLS:
-            return {
-                ...state,
-                spells: action.payload
-            }
-        case SET_SPELL:
-            return {
-                ...state,
-                spell: action.payload
+	switch (action.type) {
+		case SET_SPELLS:
+			return {
+				...state,
+				spells: action.payload,
+			};
+		case SET_SPELL:
+			return {
+				...state,
+				spell: action.payload,
 
-            }
-        case SET_FAVORITES:
-            return {
-                ...state,
-                favorites: action.payload
-
-            }
-        default:
-            return state;
-    }
-}
+			};
+		case ADD_TO_FAVORITES:
+			return {
+				...state,
+				favorites: [...state.favorites, action.payload],
+			};
+		case REMOVE_FROM_FAVORITES:
+			console.log(action.payload);
+			return {
+				...state,
+				favorites: state.favorites.filter((v:IBase) => !v.index.includes(action.payload)),
+			};
+		default:
+			return state;
+	}
+};

@@ -1,42 +1,23 @@
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { Grid, LoadingOverlay, TextInput } from '@mantine/core';
+import { Grid, TextInput } from '@mantine/core';
 import { loadSpells } from '../../store/modules/spell/actions';
 import { IBase } from '../../components/modules/Spell/Spell.dto';
 import { SpellCard } from '../../components/modules/Spell/Spell.card';
 
-export function SpellScreen() {
-	const navigate = useNavigate();
-	const dispatch: any = useDispatch();
-	const spells = useSelector((state: any) => state.spellReducer.spells);
+export function FavoritesScreen() {
+	const favorites = useSelector((state: any) => state.spellReducer.favorites);
 	const [filteredSpells, setFilteredSpells] = useState([]);
 	const [keyword, setKeyword] = useState('');
-	const [visible, setVisible] = useState(false);
-
-	const loadSpellData = async () => {
-		setVisible(true);
-		await dispatch(loadSpells());
-		setVisible(false);
-	};
 
 	useEffect(() => {
-		loadSpellData();
-	}, []);
-
-	useEffect(() => {
-		setFilteredSpells(spells);
-	}, [spells]);
-
-	useEffect(() => {
-		setFilteredSpells(spells.filter((v: IBase) => v.name.toLowerCase().includes(keyword.toLowerCase())));
-	}, [keyword]);
+		setFilteredSpells(favorites.filter((v: IBase) => v.name.toLowerCase().includes(keyword.toLowerCase())));
+	}, [keyword, favorites]);
 
 	return (
 		<div className="spell-section">
-			<LoadingOverlay visible={visible} overlayBlur={2} />
 			<div className="flex justify-between">
-				<div className="text-3xl font-bold">Spells</div>
+				<div className="text-3xl font-bold">Favorite Spells</div>
 				<TextInput
 					placeholder="Search Spells"
 					label="Search Spells"

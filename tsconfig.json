@@ -18,7 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "tab_size": 2,
+    "translate_tabs_to_spaces": true
   },
   "include": [
     "src"

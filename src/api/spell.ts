@@ -1,9 +1,5 @@
-import {GetRequest} from "../plugins/https";
+import { GetRequest } from '../plugins/https';
 
-export const APIGetSpells =()=>{
-    return GetRequest('spells');
-}
+export const APIGetSpells = () => GetRequest('spells');
 
-export const APIGetSpell =(id:string)=>{
-    return GetRequest('spells/'+id);
-}
+export const APIGetSpell = (id: string) => GetRequest(`spells/${id}`);

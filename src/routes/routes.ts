@@ -1,3 +1,1 @@
-export const DASHBOARD_ROUTES = [
-
-]
+export const DASHBOARD_ROUTES = [];
