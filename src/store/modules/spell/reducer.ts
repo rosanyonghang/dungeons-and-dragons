@@ -20,7 +20,6 @@ export const spellReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 spells: action.payload
-
             }
         case SET_SPELL:
             return {

@@ -7,6 +7,7 @@ import {BASE_URL} from "../config/baseURL";
 const baseAxios: AxiosInstance = axios.create();
 
 baseAxios.defaults.baseURL = BASE_URL;
+
 if (isAuthenticated()) {
     baseAxios.defaults.headers.common.Authorization = 'bearer ' + getToken();
 }
@@ -24,7 +25,7 @@ baseAxios.interceptors.request.use(
 baseAxios.interceptors.response.use(
     function (response) {
         if (response.status === 200) {
-            // console.log('data loaded successfully');
+            console.log('data loaded successfully');
         }
 
         if (response.status === 201) {
@@ -35,8 +36,7 @@ baseAxios.interceptors.response.use(
     }, // function(response)
     function (error) {
         if ([403, 401].includes(error?.response?.status)) {
-            // @ts-ignore
-            store.dispatch(logoutUser());
+            console.log("Authorization is required");
         }
         return Promise.reject(error?.response?.data?.message);
     } // function(error)

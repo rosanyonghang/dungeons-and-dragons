@@ -1,12 +1,13 @@
 import baseAxios from "./axios";
 
-export const GetRequest = (url: string='',config:any={}) => {
-    return baseAxios.get(url,config)
+export const GetRequest = (url: string, config: any=null) => {
+    return baseAxios.get(url, config)
 }
-export const PostRequest = (url: string='', config: any={}) => {
+
+export const PostRequest = (url: string, config: any=null) => {
     return baseAxios.post(url, config);
 }
 
-export const PutRequest = (url: string='', config: any={}) => {
+export const PutRequest = (url: string, config: any=null) => {
     return baseAxios.put(url, config);
 }
